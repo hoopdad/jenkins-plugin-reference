@@ -117,8 +117,8 @@ Once you have built the project, above, and presumably are satisfied with your r
 
 The following were useful in figuring out the steps.
 
-[https://www.jenkins.io/doc/developer/tutorial/]
-[https://jenkinsci.github.io/maven-hpi-plugin/run-mojo.html]
-[https://jenkinsci.github.io/maven-hpi-plugin/]
-[https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md]
-[https://adoptium.net/installation/linux]
+- [https://www.jenkins.io/doc/developer/tutorial/]
+- [https://jenkinsci.github.io/maven-hpi-plugin/run-mojo.html]
+- [https://jenkinsci.github.io/maven-hpi-plugin/]
+- [https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md]
+- [https://adoptium.net/installation/linux]
