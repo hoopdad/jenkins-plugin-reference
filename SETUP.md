@@ -80,14 +80,14 @@ For purposes of this example, we built a hello-world plugin, which is a plugin t
 mvn archetype:generate -Dfilter=io.jenkins.archetypes:plugin
 ```
 
-This will generate the folder hierarchy undera single folder that you can move where you want.In this repo, it was moved to the `bsc-jenkins` subdirectory.
+This will generate the folder hierarchy undera single folder that you can move where you want.In this repo, it was moved to the `event-processing` subdirectory.
 
 ## Build and Run
 
 This was run within WSL but a browser was used from the Windows host. This required using the `0.0.0.0` bind address as otherwise it was not accessible. If unable to reach the port, add a rule for your Windows Firewall to get to your desired port for private networks. It was found to need running as root, even though it's an unrestricted port.
 
 ```bash
-cd bsc-jenkins
+cd event-processing
 sudo mvn hpi:run -Dport=8888 -Dhost=0.0.0.0
 ```
 

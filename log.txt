@@ -1,22 +1,51 @@
-2025-09-16 16:13:40.515+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalRunListener#onStarted: [RunListener] Job started: testpipeline #15 (Build #15)
-2025-09-16 16:13:40.541+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onCreated: [FlowExecutionListener] Pipeline created: CpsFlowExecution[testpipeline#15]
-2025-09-16 16:13:40.917+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: {"id":"2","displayName":"Start of Pipeline","displayFunctionName":"Start of Pipeline","isActive":true,"error":"","enclosingId":"null","searchUrl":"2","url":"job/testpipeline/15/execution/node/2/"}
-2025-09-16 16:13:40.917+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: FlowStartNode(): true
-2025-09-16 16:13:40.918+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: FlowEndNode(): false
-2025-09-16 16:13:40.918+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: CpsFlowExecution[testpipeline#15]
-2025-09-16 16:13:40.919+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#getStageName: org.jenkinsci.plugins.workflow.actions.TimingAction@22019b8f
-2025-09-16 16:13:40.919+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#getStageName: Timing
-2025-09-16 16:13:40.920+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: [Stage START] UnknownStage (Node 2)
-2025-09-16 16:13:40.946+0000 [id=123]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onRunning: [FlowExecutionListener] Pipeline running: CpsFlowExecution[testpipeline#15]
-2025-09-16 16:13:41.172+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: {"id":"3","displayName":"End of Pipeline","displayFunctionName":"End of Pipeline","isActive":false,"error":"","enclosingId":"null","searchUrl":"3","url":"job/testpipeline/15/execution/node/3/"}
-2025-09-16 16:13:41.173+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: FlowStartNode(): false
-2025-09-16 16:13:41.173+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: FlowEndNode(): true
-2025-09-16 16:13:41.173+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: CpsFlowExecution[testpipeline#15]
-2025-09-16 16:13:41.173+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#getStageName: org.jenkinsci.plugins.workflow.actions.TimingAction@22019b8f
-2025-09-16 16:13:41.173+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#getStageName: Timing
-2025-09-16 16:13:41.174+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: [Stage END] UnknownStage (Node 3)
-2025-09-16 16:13:41.174+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#getStageName: org.jenkinsci.plugins.workflow.actions.TimingAction@1a0fe31a
-2025-09-16 16:13:41.175+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#getStageName: Timing
-2025-09-16 16:13:41.175+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalStageGraphListener#onNewHead: [Stage END] UnknownStage (Node 3)
-2025-09-16 16:13:41.176+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalRunListener#onCompleted: [RunListener] Job completed: testpipeline #15 (Build #15) Result=SUCCESS
-2025-09-16 16:13:41.203+0000 [id=128]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onCompleted: [FlowExecutionListener] Pipeline completed: CpsFlowExecution[testpipeline#15]
+2025-09-17 20:33:30.111+0000 [id=59]    INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+2025-09-17 20:33:35.610+0000 [id=122]   INFO    h.e.UnifiedEventListener$GlobalRunListener#onStarted: onStarted JSON: {
+  "type": "job",
+  "event": "onStarted",
+  "eventGeneratedTimestamp": "2025-09-17 20:33:35.607Z",
+  "id": "51",
+  "number": "51",
+  "displayName": "#51",
+  "result": "null",
+  "duration": 0,
+  "startTimeInMillis": 1758141215570,
+  "startTimestamp": "2025-09-17 20:33:35.570Z",
+  "url": "job/testpipeline/51/"
+}
+2025-09-17 20:33:35.653+0000 [id=122]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onCreated: [FlowExecutionListener] Pipeline created: CpsFlowExecution[testpipeline#51]
+2025-09-17 20:33:35.654+0000 [id=122]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onCreated: JSON: {
+  "type": "pipeline",
+  "event": "onCreated",
+  "eventGeneratedTimestamp": "2025-09-17 20:33:35.653Z",
+  "execution": "CpsFlowExecution[testpipeline#51]",
+  "isComplete": false
+}
+2025-09-17 20:33:36.024+0000 [id=122]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onRunning: [FlowExecutionListener] Pipeline running: CpsFlowExecution[testpipeline#51]
+2025-09-17 20:33:36.025+0000 [id=122]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onRunning: JSON: {
+  "type": "pipeline",
+  "event": "onRunning",
+  "eventGeneratedTimestamp": "2025-09-17 20:33:36.025Z",
+  "execution": "CpsFlowExecution[testpipeline#51]",
+  "isComplete": false
+}
+2025-09-17 20:33:36.165+0000 [id=127]   INFO    h.e.UnifiedEventListener$GlobalRunListener#onCompleted: onCompleted JSON: {
+  "type": "job",
+  "event": "OnCompleted",
+  "eventGeneratedTimestamp": "2025-09-17 20:33:36.165Z",
+  "id": "51",
+  "number": "51",
+  "displayName": "#51",
+  "result": "SUCCESS",
+  "duration": 595,
+  "startTimeInMillis": 1758141215570,
+  "startTimestamp": "2025-09-17 20:33:35.570Z",
+  "url": "job/testpipeline/51/"
+}
+2025-09-17 20:33:36.182+0000 [id=127]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onCompleted: [FlowExecutionListener] Pipeline completed: CpsFlowExecution[testpipeline#51]
+2025-09-17 20:33:36.183+0000 [id=127]   INFO    h.e.UnifiedEventListener$GlobalFlowExecutionListener#onCompleted: JSON: {
+  "type": "pipeline",
+  "event": "onCompleted",
+  "eventGeneratedTimestamp": "2025-09-17 20:33:36.182Z",
+  "execution": "CpsFlowExecution[testpipeline#51]",
+  "isComplete": true
+}
