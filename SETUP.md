@@ -4,14 +4,14 @@ This was tested in Ubuntu 22 running on WSL on a Windows 11 workstation.
 
 ## Java
 
-Setup Java. Use Java 21 or later. You can use the instructions at [https://adoptium.net/installation/linux] which are summarized here.
+Setup Java. Use Java 17 for current Jenkins deployment. Other versions will not work when you go to deploy to a server such as CloudBees. You can use the instructions at [https://adoptium.net/installation/linux] which are summarized here.
 
 ```bash
 sudo apt install -y wget apt-transport-https gpg
 sudo wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gd/adoptium.gpg > /dev/null
 sudo echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) mai" | sudo tee /etc/apt/sources.list.d/adoptium.list
 sudo apt update
-sudo apt install temurin-21-jdk
+sudo apt install temurin-17-jdk
 java -version
 ```
 
@@ -88,7 +88,7 @@ This was run within WSL but a browser was used from the Windows host. This requi
 
 ```bash
 cd event-processing
-sudo mvn hpi:run -Dport=8888 -Dhost=0.0.0.0
+mvn clean hpi:run -Dport=8888 -Dhost=0.0.0.0
 ```
 
 ## Test Locally
@@ -109,9 +109,42 @@ Navigate to [http://localhost:8888/jenkins/]
 12. Click Console output.
 13. See the fruits of your creative naming where it says "hello, <name>!"
 
+You will see output in your console from which you launched it. 
+
 ## Server Deployment
 
 Once you have built the project, above, and presumably are satisfied with your rigorous testing, you can use the .hpi file in the target directory. You can upload this to your artifact repository or directly to a Jenkins server if that's appropriate.
+
+## The Inferno of Seven Levels of Jenkins, Java and Maven Versions
+
+You might need to adjust your Jenkins Plugin versions, based on error message from CloudBees or Jenkins.
+
+Check your Java and Maven versions as above and make sure you followed all steps.
+
+If you need to adjust your Jenkins library versions, try to change the "BOM" first since it will wrap up compatible versions. 
+
+To pick the latest version:
+
+1. go to  https://github.com/jenkinsci/bom
+2. find the link for "latest bom"
+3. click the link for your target Jenkins version, i.e. 2.504.x for a Jenkins platform on 2.504.3 which you put into jenkins.properties
+4. Get the maven-metadata.xml file
+5. Grab the version for the release tags
+6. Paste that into the <version> tag below in the DependencyManagement section of your pom.xml
+
+```xml
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-${jenkins.baseline}.x</artifactId>
+        <version>5388.v3ea_2e00a_719a_</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+```
 
 ## References
 
