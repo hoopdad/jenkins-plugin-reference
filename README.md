@@ -1,4 +1,4 @@
-# BSC Jenkins Plugin Reference
+# Jenkins Plugin Reference
 
 ## About
 

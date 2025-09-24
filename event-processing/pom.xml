@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -8,7 +8,7 @@
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
     <version>5.26</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <groupId>io.jenkins.plugins</groupId>
@@ -16,33 +16,17 @@
   <version>${revision}${changelist}</version>
   <packaging>hpi</packaging>
 
-  <name>Event Processing Plugin</name>
-  <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-  <licenses>
-    <license>
-      <name>MIT License</name>
-      <url>https://opensource.org/license/mit/</url>
-    </license>
-  </licenses>
-
   <properties>
     <revision>0.1.0</revision>
     <changelist>-SNAPSHOT</changelist>
-
-    <!-- Jenkins LTS baseline -->
     <jenkins.baseline>2.504</jenkins.baseline>
     <jenkins.version>${jenkins.baseline}.2</jenkins.version>
-
-    <spotless.check.skip>false</spotless.check.skip>
-    <ban-junit4-imports.skip>false</ban-junit4-imports.skip>
-
     <maven.compiler.release>17</maven.compiler.release>
     <maven.compiler.testRelease>17</maven.compiler.testRelease>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-      <!-- Align with CloudBees/Jenkins plugin BOM for 2.504.x -->
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>bom-${jenkins.baseline}.x</artifactId>
@@ -54,56 +38,45 @@
   </dependencyManagement>
 
   <dependencies>
-    <!-- Pipeline APIs (no versions: inherited from BOM) -->
+    <!-- Pipeline APIs -->
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>pipeline-stage-step</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
+
+    <!-- Workflow plugins: provided at runtime -->
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-step-api</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-support</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-api</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-cps</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-durable-task-step</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-job</artifactId>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>repo.jenkins-ci.org</id>
-      <url>https://repo.jenkins-ci.org/public/</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>repo.jenkins-ci.org</id>
-      <url>https://repo.jenkins-ci.org/public/</url>
-    </pluginRepository>
-  </pluginRepositories>
 
   <build>
     <plugins>
@@ -111,6 +84,9 @@
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
         <version>3.66</version>
+        <configuration>
+          <skipHpl>true</skipHpl>
+        </configuration>
       </plugin>
     </plugins>
   </build>

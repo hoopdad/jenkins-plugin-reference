@@ -13,6 +13,7 @@ import org.jenkinsci.plugins.workflow.graph.BlockStartNode;
 import org.jenkinsci.plugins.workflow.graph.FlowNode;
 
 import hudson.Extension;
+import hudson.model.Job;
 import hudson.model.Run;
 import hudson.model.TaskListener;
 import hudson.model.listeners.RunListener;
@@ -34,6 +35,7 @@ public class UnifiedEventListener {
     public static class GlobalRunListener extends RunListener<Run<?,?>> {
         @Override
         public void onStarted(Run<?,?>  run, TaskListener listener) {
+            LOGGER.info(() -> "onStarted JSON: ");
             // TODO put your code here
             String json = createJson(run, "onStarted");
             LOGGER.info(() -> "onStarted JSON: " + json);
@@ -41,6 +43,7 @@ public class UnifiedEventListener {
 
         @Override
         public void onCompleted(Run<?,?>  run, TaskListener listener) {
+            LOGGER.info(() -> "onCompleted JSON: ");
             // TODO put your code here
             String json = createJson(run,   "OnCompleted");
             LOGGER.info(() -> "onCompleted JSON: " + json);
@@ -81,6 +84,68 @@ public class UnifiedEventListener {
                     formattedTimestamp,
                     run.getUrl()
                 );
+
+                // LOGGER.info(() -> "Job's parent': " + run.);
+                Job j = run.getParent();
+                
+                LOGGER.info(() -> "getBuildStatusUrl: " + j.getBuildStatusUrl());
+                j.getAllProperties().forEach(p -> {
+                    try {
+                        LOGGER.info(() -> "Job Property: " + p.getClass().getName() + " - " + p);
+                    } catch (Exception e) {
+                        LOGGER.warning("Error logging job property: " + e.getMessage());
+                    }
+                });
+                j.getProperties().keySet().forEach(p -> {
+                    try {
+                        LOGGER.info(() -> "Job Property: " + p + " - " + j.getProperties().get(p));
+                    } catch (Exception e) {
+                        LOGGER.warning("Error logging job property: " + e.getMessage());
+                    }
+                });
+                
+                try {
+                    LOGGER.info(() -> "Job's parent': " + j.getParent().getClass().getName());
+                } catch (Exception e) {
+                    LOGGER.warning("Error logging job property: " + e.getMessage());
+                }
+                try {
+                    if (j.getParent() instanceof hudson.model.Hudson) {
+                        hudson.model.Hudson h = (hudson.model.Hudson) j.getParent();
+                        LOGGER.info(() -> "Job's parent (Hudson) getUrlChildPrefix: " + h.getUrlChildPrefix());
+                        LOGGER.info(() -> "Job's parent (Hudson) getConfiguredRootUrl(): " + h.getConfiguredRootUrl());
+                    } else {
+                        LOGGER.info(() -> "Job's parent is not Hudson, actual type: " + j.getParent().getClass().getName());
+                    }
+                } catch (Exception e) {
+                    LOGGER.warning("Error logging job property: " + e.getMessage());
+                }
+
+                try {
+                    LOGGER.info(() -> "Job Property: " + j.getAbsoluteUrl());
+                } catch (Exception e) {
+                    LOGGER.warning("Error logging job property: " + e.getMessage());
+                }
+                try {
+                    LOGGER.info(() -> "getSearchName: " + j.getApi().getSearchName());
+                } catch (Exception e) {
+                    LOGGER.warning("Error logging job property: " + e.getMessage());
+                }
+                try {
+                    LOGGER.info(() -> "getSearchUrl: " + j.getApi().getSearchUrl());
+                } catch (Exception e) {
+                    LOGGER.warning("Error logging job property: " + e.getMessage());
+                }
+                try {
+                    LOGGER.info(() -> "getSearch: " + j.getApi().getSearch());
+                } catch (Exception e) {
+                    LOGGER.warning("Error logging job property: " + e.getMessage());
+                }
+
+                LOGGER.info(() -> "Job Property: " + j.getFullName());
+                LOGGER.info(() -> "Job Property: " + j.getName());
+
+
             } catch (Exception e) {
                 LOGGER.warning("Error creating JSON for run: " + e.getMessage());
             }
